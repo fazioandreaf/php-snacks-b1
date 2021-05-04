@@ -23,9 +23,12 @@
         <?php
         $squadHome=['Milan','Inter','Juventus','Parma','Benevento','Spezia','Udinese','Fiorentina','Roma','Lazio','Napoli','Reggina','Ascoli'];
         $squadGuest=['Perugia','Catania','Palermo','Genoa','Sampdoria','Benevento','Bari','Siena','Empoli','Ternana','Trapani','Caserta','Bologna'];
-        echo $squadHome[rand(0,count($squadHome)-1)].' - ';
-        echo $squadGuest[rand(0,count($squadGuest)-1)].' | ';
-        echo rand(0,90).' - '.rand(0,90);
+        for($x=0;$x<count($squadHome);$x++){
+            echo '<div>'.$squadHome[$x].' - ';
+
+            echo $squadGuest[$x].' | ';
+            echo rand(0,90).' - '.rand(0,90).'</div>';
+        }
         ?>
         <!-- ## Snack 2
         Passare come parametri GET name, mail e age e verificare (cercando i metodi che non conosciamo nella documentazione) che name sia più lungo di 3 caratteri, che mail contenga un punto e una chiocciola e che age sia un numero. Se tutto è ok stampare "Accesso riuscito", altrimenti "Accesso negato"  -->
@@ -35,22 +38,33 @@
         $name= $_GET[name];
         $mail= $_GET[mail];
         $age= $_GET[age];
-        echo $name.' '.$mail.' '.$age.' ';
         $nameTrue=strlen(trim($name));
         $mailTrue=trim($mail);
         // integer sta per number
         $ageTrue=is_numeric($age);
-        echo gettype($ageTrue);
-
-
+        echo $name.' '.$mailTrue.' '.$age.' ';
+        echo gettype(strpos($mailTrue,'d'));
+        // echo gettype($ageTrue);
         if($nameTrue<=3){
             echo ' Non hai inserito un nome pertinente';
-            if(!strpos($mailTrue,'.') || strpos(!$mailTrue,'@'))
+            if(strpos($mailTrue,'.') != false)
                 echo 'non hai inserito una email valida';
+
+
                 if($ageTrue==integer)
                 echo 'Non hai scritto un numero';
         }
-            
+                    // utilizzo di funzione
+        //    $mail = $_GET['email'];
+        //    $hasDot = strpos($mail,'.');
+        //    $hasAt = strpos($mail,'@');
+        //    var_dump($mail,$hasDot,$hasAt);
+        //    if($hasAt == false || $hasDot == false){
+        //        echo 'ko';
+        //    }else{
+        //        echo 'ok';
+        //    }
+
         
         
         
