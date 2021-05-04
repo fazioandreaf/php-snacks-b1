@@ -26,18 +26,37 @@
         echo $squadHome[rand(0,count($squadHome)-1)].' - ';
         echo $squadGuest[rand(0,count($squadGuest)-1)].' | ';
         echo rand(0,90).' - '.rand(0,90);
-        // ?>
+        ?>
         <!-- ## Snack 2
         Passare come parametri GET name, mail e age e verificare (cercando i metodi che non conosciamo nella documentazione) che name sia più lungo di 3 caratteri, che mail contenga un punto e una chiocciola e che age sia un numero. Se tutto è ok stampare "Accesso riuscito", altrimenti "Accesso negato"  -->
+        </h1>
+        <h1>
         <?php
-        // ?>
+        $name= $_GET[name];
+        $mail= $_GET[mail];
+        $age= $_GET[age];
+        echo $name.' '.$mail.' '.$age.' ';
+        $nameTrue=strlen(trim($name));
+        $mailTrue=trim($mail);
+        // integer sta per number
+        $ageTrue=(int)$age;
+        echo $ageTrue;
 
 
-
-
-
-
+        if($nameTrue<=3){
+            echo ' Non hai inserito un nome pertinente';
+            if(!strpos($mailTrue,'.') || strpos(!$mailTrue,'@'))
+                echo 'non hai inserito una email valida';
+                if($ageTrue==3)
+                    echo 'cazzo hai scritto';
+        }
+            
         
+        
+        
+        
+        
+        ?>
         </h1>
     </div>
 </body>
