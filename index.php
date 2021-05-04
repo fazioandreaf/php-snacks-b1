@@ -4,15 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-    .bg-green{
-        background-color:green;
-    }
-    .bg-red{
-        background-color:red;
-    }
-    </style>
+    <title>php snack</title>
 </head>
 <body>
     <div class="cotainer">
@@ -35,41 +27,25 @@
         </h1>
         <h1>
         <?php
-        $name= $_GET[name];
-        $mail= $_GET[mail];
-        $age= $_GET[age];
+        $name= $_GET['name'];
+        $mail= $_GET['mail'];
+        $age= $_GET['age'];
         $nameTrue=strlen(trim($name));
         $mailTrue=trim($mail);
-        // integer sta per number
         $ageTrue=is_numeric($age);
-        echo $name.' '.$mailTrue.' '.$age.' ';
-        echo gettype(strpos($mailTrue,'d'));
-        // echo gettype($ageTrue);
-        if($nameTrue<=3){
+        $hasdot = strpos($mailTrue,'.');
+        $hasa = strpos($mailTrue,'@');
+        if($nameTrue<=3)
             echo ' Non hai inserito un nome pertinente';
-            if(strpos($mailTrue,'.') != false)
-                echo 'non hai inserito una email valida';
-
-
-                if($ageTrue==integer)
-                echo 'Non hai scritto un numero';
-        }
-                    // utilizzo di funzione
-        //    $mail = $_GET['email'];
-        //    $hasDot = strpos($mail,'.');
-        //    $hasAt = strpos($mail,'@');
-        //    var_dump($mail,$hasDot,$hasAt);
-        //    if($hasAt == false || $hasDot == false){
-        //        echo 'ko';
-        //    }else{
-        //        echo 'ok';
-        //    }
-
-        
-        
-        
-        
-        
+            else{
+                if($hasdot === false || $hasa === false)
+                echo 'Non hai inserito una email valida';
+                else {
+                    if($ageTrue)
+                    echo 'Accesso eseguito';
+                    else echo 'Non hai inserito una età giusta';
+                }
+            }        
         ?>
         </h1>
     </div>
