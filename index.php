@@ -39,16 +39,16 @@
         $nameTrue=strlen(trim($name));
         $mailTrue=trim($mail);
         // integer sta per number
-        $ageTrue=(int)$age;
-        echo $ageTrue;
+        $ageTrue=is_numeric($age);
+        echo gettype($ageTrue);
 
 
         if($nameTrue<=3){
             echo ' Non hai inserito un nome pertinente';
             if(!strpos($mailTrue,'.') || strpos(!$mailTrue,'@'))
                 echo 'non hai inserito una email valida';
-                if($ageTrue==3)
-                    echo 'cazzo hai scritto';
+                if($ageTrue==integer)
+                echo 'Non hai scritto un numero';
         }
             
         
